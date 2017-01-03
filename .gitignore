@@ -1,12 +1,4 @@
-.DS_Store
-.svn
-.sass-cache
-.tmp
 node_modules
-tmp
+bundle.js.map
+.DS_Store
 dist
-archive
-archive.zip
-*.log
-
-dev/vendors

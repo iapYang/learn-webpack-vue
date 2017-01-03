@@ -1,6 +1,7 @@
 module.exports = {
     plugins: [
-        require('postcss-cssnext')(),
-        require('postcss-sorting')(),
+        require('postcss-smart-import')({ /* ...options */ }),
+        require('precss')({ /* ...options */ }),
+        require('autoprefixer')({ /* ...options */ }),
     ],
 };
