@@ -16,20 +16,23 @@
 
 <div class="app-container">
     <div id="tutorial">
-        <Navs></Navs>
+        <navigation></navigation>
+        <editor></editor>
     </div>
 </div>
 
 </template>
 
 <script>
-import Navs from './tutorial/Navs.vue';
+import Navigation from './tutorial/Navigation.vue';
+import Editor from './tutorial/Editor.vue';
 
 console.log('app vue');
 
 export default {
     components: {
-        Navs,
+        Navigation,
+        Editor,
     }
 }
 
