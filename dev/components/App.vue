@@ -2,6 +2,8 @@
 
 @import "../styles/mixin.scss";
 @import "../styles/reset.scss";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
 .app-container {
     /*background-color: red;*/
     width: 100%;
