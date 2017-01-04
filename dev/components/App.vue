@@ -18,6 +18,7 @@
     <div id="tutorial">
         <navigation></navigation>
         <editor></editor>
+        <order></order>
     </div>
 </div>
 
@@ -26,6 +27,7 @@
 <script>
 import Navigation from './tutorial/Navigation.vue';
 import Editor from './tutorial/Editor.vue';
+import Order from './tutorial/Order.vue';
 
 console.log('app vue');
 
@@ -33,6 +35,7 @@ export default {
     components: {
         Navigation,
         Editor,
+        Order,
     }
 }
 
