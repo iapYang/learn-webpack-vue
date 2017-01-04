@@ -78,8 +78,6 @@
 
 <script>
 
-console.log('nav vue');
-
 export default {
     data() {
         return {

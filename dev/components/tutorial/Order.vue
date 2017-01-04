@@ -7,7 +7,7 @@
             <ul>
                 <li
                 v-for="item,i in items"
-                :key="item + i"
+                :key="i"
                 @click="clickHandler(item)"
                 :class="{ active: item.selected }"
                 >

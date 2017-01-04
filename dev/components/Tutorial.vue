@@ -4,7 +4,7 @@
 @import "../styles/reset.scss";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
-.app-container {
+.tutorial-container {
     /*background-color: red;*/
     width: 100%;
     min-height: 500px;
@@ -14,12 +14,11 @@
 
 <template lang="html">
 
-<div class="app-container">
-    <div id="tutorial">
-        <navigation></navigation>
-        <editor></editor>
-        <order></order>
-    </div>
+<div class="tutorial-container">
+    <navigation></navigation>
+    <editor></editor>
+    <order></order>
+    <search></search>
 </div>
 
 </template>
@@ -28,14 +27,14 @@
 import Navigation from './tutorial/Navigation.vue';
 import Editor from './tutorial/Editor.vue';
 import Order from './tutorial/Order.vue';
-
-console.log('app vue');
+import Search from './tutorial/Search.vue';
 
 export default {
     components: {
         Navigation,
         Editor,
         Order,
+        Search,
     }
 }
 

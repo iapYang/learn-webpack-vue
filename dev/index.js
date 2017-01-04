@@ -1,12 +1,12 @@
 
 import Vue from 'vue';
 
-import App from './components/App.vue';
+import Tutorial from './components/Tutorial.vue';
 
 console.log('index.js');
 
-const app = new Vue({
+const tutorial = new Vue({
     components: {
-        App,
+        Tutorial,
     },
-}).$mount('#app');
+}).$mount('#tutorial');
