@@ -1,43 +1,11 @@
-# Webpack & React
+# Webpack & Vue
 
 ## 使用步骤：
 
 1. npm install
 2. npm start
-3. 服务器：localhost:10000 (renfinery) localhost:10000/tutorial.html (五个小练习)
-4. 代码地址：./dev/component/Refinery
-
-## webpack（1d）
-
-- [x] 环境配置
-- [x] 模块引用
-- [x] 编译es6
-- [x] 注入css
-- [x] 编译sass并注入
-
-
-
-## react（3d）
-
-- [x] 数据驱动的概念
-- [x] 环境配置
-- [x] 熟悉jsx语法
-- [x] 渲染固定内容到页面
-- [x] props和state的区别与应用场景
-- [x] 事件注册
-- [x] 条件渲染
-- [x] 列表渲染
-- [x] 生命周期函数
-- [x] 父子组件之间数据传递
-- [x] 获取组件中的dom元素
-
-
 
 ## 考核
-
-### 跟着官方教程demo做一个xo棋（0.5d）
-
-- [x] [点击访问](https://facebook.github.io/react/tutorial/tutorial.html)
 
 ### 实现前端框架的几个小案例（1d）
 

@@ -19,6 +19,7 @@
     <editor></editor>
     <order></order>
     <search></search>
+    <filterImg></filterImg>
 </div>
 
 </template>
@@ -28,6 +29,7 @@ import Navigation from './tutorial/Navigation.vue';
 import Editor from './tutorial/Editor.vue';
 import Order from './tutorial/Order.vue';
 import Search from './tutorial/Search.vue';
+import FilterImg from './tutorial/FilterImg.vue';
 
 export default {
     components: {
@@ -35,6 +37,7 @@ export default {
         Editor,
         Order,
         Search,
+        FilterImg,
     }
 }
 
