@@ -3,6 +3,7 @@
 @import "../styles/mixin.scss";
 @import "../styles/reset.scss";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+// @include font-face("BrownStd-Bold");
 
 .tutorial-container {
     /*background-color: red;*/
