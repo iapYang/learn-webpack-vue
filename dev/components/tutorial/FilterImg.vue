@@ -109,8 +109,8 @@ export default {
     .filter-img {
         position: relative;
         width: 100%;
-        height: 80vh;
-        margin: 0 auto 60px;
+        height: 90vh;
+        margin: 0 auto;
 
         .btn-list {
             position: relative;
