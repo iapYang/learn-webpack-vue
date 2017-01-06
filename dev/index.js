@@ -1,9 +1,11 @@
 import Vue from 'vue';
 
-import Tutorial from './components/Tutorial.vue';
+import App from './components/App.vue';
+import router from './router.js';
 
-const tutorial = new Vue({
+const app = new Vue({
+    router,
     components: {
-        Tutorial,
+        App,
     },
-}).$mount('#tutorial');
+}).$mount('#app');
