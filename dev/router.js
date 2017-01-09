@@ -11,10 +11,6 @@ import FilterImg from './components/tutorial/FilterImg.vue';
 
 Vue.use(VueRouter);
 
-const User = {
-    template: '<div class=\'aaa\'>User {{ $route.params.id }}</div>',
-};
-
 const routes = [{
     path: '/tutorial',
     name: 'tutorial',
