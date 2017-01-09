@@ -2,7 +2,6 @@
     .navs {
         position: relative;
         width: 100%;
-        height: 100vh;
         text-align: center;
 
         .navs-header {

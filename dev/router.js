@@ -15,32 +15,31 @@ const User = {
     template: '<div class=\'aaa\'>User {{ $route.params.id }}</div>',
 };
 
-console.log(Navigation);
-
 const routes = [{
     path: '/tutorial',
     name: 'tutorial',
     component: Tutorial,
-}, {
-    path: '/tutorial/Navigation',
-    name: 'Navigation',
-    component: Navigation,
-}, {
-    path: '/tutorial/Editor',
-    name: 'Editor',
-    component: Editor,
-}, {
-    path: '/tutorial/Order',
-    name: 'Order',
-    component: Order,
-}, {
-    path: '/tutorial/Search',
-    name: 'Search',
-    component: Search,
-}, {
-    path: '/tutorial/FilterImg',
-    name: 'FilterImg',
-    component: FilterImg,
+    children: [{
+        path: 'Navigation',
+        name: 'tutorial-Navigation',
+        component: Navigation,
+    }, {
+        path: 'Editor',
+        name: 'tutorial-Editor',
+        component: Editor,
+    }, {
+        path: 'Order',
+        name: 'tutorial-Order',
+        component: Order,
+    }, {
+        path: 'Search',
+        name: 'tutorial-Search',
+        component: Search,
+    }, {
+        path: 'FilterImg',
+        name: 'tutorial-FilterImg',
+        component: FilterImg,
+    }],
 }];
 
 const router = new VueRouter({

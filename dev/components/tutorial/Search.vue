@@ -77,7 +77,6 @@ export default {
     .search {
         width: 520px;
         margin: 45px auto 0;
-        min-height: 90vh;
 
         .search-header {
             background-color: #5c9bb7;

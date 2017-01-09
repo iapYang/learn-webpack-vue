@@ -11,16 +11,14 @@
 <template lang="html">
 
 <div class="tutorial-container">
-    <navigation></navigation>
-    <editor></editor>
-    <order></order>
-    <search></search>
-    <filterImg></filterImg>
+    <home></home>
+    <router-view></router-view>
 </div>
 
 </template>
 
 <script>
+import Home from './tutorial/Home.vue';
 import Navigation from './tutorial/Navigation.vue';
 import Editor from './tutorial/Editor.vue';
 import Order from './tutorial/Order.vue';
@@ -29,6 +27,7 @@ import FilterImg from './tutorial/FilterImg.vue';
 
 export default {
     components: {
+        Home,
         Navigation,
         Editor,
         Order,
