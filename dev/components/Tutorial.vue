@@ -19,20 +19,10 @@
 
 <script>
 import Home from './tutorial/Home.vue';
-import Navigation from './tutorial/Navigation.vue';
-import Editor from './tutorial/Editor.vue';
-import Order from './tutorial/Order.vue';
-import Search from './tutorial/Search.vue';
-import FilterImg from './tutorial/FilterImg.vue';
 
 export default {
     components: {
         Home,
-        Navigation,
-        Editor,
-        Order,
-        Search,
-        FilterImg,
     }
 }
 
