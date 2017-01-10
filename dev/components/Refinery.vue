@@ -67,7 +67,7 @@ export default {
                     text-align: center;
 
                     .text {
-                        font-family: BrownStdBold;
+                        font-family: BrownStd-Bold;
                         font-size: 16px;
                         letter-spacing: 2px;
                         text-transform: uppercase;

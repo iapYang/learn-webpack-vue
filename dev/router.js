@@ -10,6 +10,8 @@ import FilterImg from './components/tutorial/FilterImg.vue';
 
 import Refinery from './components/Refinery.vue';
 import Welcome from './components/content/Welcome.vue';
+import Who from './components/content/Who.vue';
+import Trait from './components/content/Trait.vue';
 
 Vue.use(VueRouter);
 
@@ -43,8 +45,16 @@ const routes = [{
     component: Refinery,
     children: [{
         path: '',
-        name: 'default',
+        name: 'Welcome',
         component: Welcome,
+    }, {
+        path: 'who',
+        name: 'Who',
+        component: Who,
+    }, {
+        path: 'trait',
+        name: 'Trait',
+        component: Trait,
     }],
 }];
 

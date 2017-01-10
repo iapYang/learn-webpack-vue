@@ -6,6 +6,7 @@ import store from './store.js';
 
 const app = new Vue({
     router,
+    store,
     components: {
         App,
     },

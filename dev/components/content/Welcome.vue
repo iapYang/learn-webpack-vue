@@ -14,7 +14,7 @@
             </div>
             <div
                 class='btn-start'
-                onClick={this.handleNextClick.bind(this)}
+                @click='clickHandler'
                 >
                 <span class='text'>begin</span>
                 <span class='symbol'>l</span>
@@ -33,6 +33,13 @@
 
 <script>
 export default {
+    methods: {
+        clickHandler: function() {
+            this.$router.push({
+                name: 'Who',
+            });
+        },
+    },
 }
 </script>
 
