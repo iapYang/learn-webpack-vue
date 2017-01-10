@@ -18,4 +18,16 @@ module.shuffle = array => {
     return array;
 };
 
+module.copyArray = array => {
+    const arrayNew = [];
+
+    array.forEach(arr => {
+        arrayNew.push({
+            ...arr,
+        });
+    });
+
+    return arrayNew;
+};
+
 export default module;
