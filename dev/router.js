@@ -8,6 +8,8 @@ import Order from './components/tutorial/Order.vue';
 import Search from './components/tutorial/Search.vue';
 import FilterImg from './components/tutorial/FilterImg.vue';
 
+import Refinery from './components/Refinery.vue';
+import Welcome from './components/content/Welcome.vue';
 
 Vue.use(VueRouter);
 
@@ -35,6 +37,14 @@ const routes = [{
         path: 'FilterImg',
         name: 'tutorial-FilterImg',
         component: FilterImg,
+    }],
+}, {
+    path: '',
+    component: Refinery,
+    children: [{
+        path: '',
+        name: 'default',
+        component: Welcome,
     }],
 }];
 

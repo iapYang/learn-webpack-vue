@@ -5,12 +5,9 @@
 </template>
 
 <script>
-import Tutorial from './Tutorial.vue';
 
 export default {
-    components: {
-        Tutorial,
-    }
+
 }
 </script>
 
@@ -19,11 +16,20 @@ export default {
 @import "../styles/reset.scss";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
+@include font-face("refinery29");
+@include font-face("BrownStd-Bold");
+@include font-face("BrownStd-Regular");
+@include font-face("icomoon");
+
+body,
+html {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
 .app-container{
     position: relative;
-
-    .aaa {
-        font-size: 15px;
-    }
 }
 </style>
