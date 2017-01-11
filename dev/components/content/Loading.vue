@@ -15,9 +15,10 @@ export default {
 </script>
 
 <style lang="scss">
-.loading-container {
-    position: relative;
+#refinery .content-container .loading-container {
+    position: absolute;
     background-color: #fcf3f4;
+    z-index: 2;
 
     .title {
         position: absolute;
