@@ -37,9 +37,11 @@ import Database from '../../modules/Database.js';
 
 export default {
     data() {
+        const choice = parseInt(this.$store.state.who.choice);
+
         return {
             pictures: Database.pictures,
-            choice: this.$store.state.who.choice,
+            choice: typeof(choice) === 'undefined' ? -1 : choice,
         }
     },
     methods: {
@@ -58,12 +60,15 @@ export default {
             });
             this.$router.push({
                 name: 'Trait',
+                query: {
+                    p_id: this.choice,
+                },
             });
         },
     },
     computed: {
         ifClickAble() {
-            return (this.choice >=0 & this.choice < Database.pictures.length) ? 'able' : 'disabled';
+            return (this.choice >=0 && this.choice < Database.pictures.length) ? 'able' : 'disabled';
         },
     },
 }

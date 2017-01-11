@@ -2,6 +2,7 @@
     <div class='trait frame'>
         <div
             class='back-container'
+            @click='backHandler'
             >
             <span class='arrow'>r</span>
             <span class='back'>back</span>
@@ -27,6 +28,7 @@
                 <li
                 v-for="trait,i in traits"
                 :key={trait}
+                :class="ifActive(i)"
                 @click="clickHandler(i)"
                 >
                 <div class="circle-container">
@@ -40,6 +42,8 @@
             </ul>
             <div
                 class='btn-next'
+                @click='nextHandler'
+                :class='clickAble'
                 >
                 <span class='text'>see gifts</span>
                 <span class='symbol'>l</span>
@@ -54,23 +58,81 @@ import Utils from '../../modules/Utils.js';
 
 export default {
     data() {
+        let p_id = this.$store.state.who.choice;
+
+        if (!p_id) {
+            p_id = this.$route.query.p_id;
+
+            this.$store.commit('changeWho', {
+                choice: p_id,
+            });
+        }
+
         return {
             number: 3,
             traits: Utils.copyArray(Database.traits),
+            p_id,
         }
     },
     computed: {
         who() {
-            return Database.pictures[this.$store.state.who.choice !== -1 ? this.$store.state.who.choice : 0].name;
+            return Database.pictures[this.p_id].name;
         },
         plural() {
             return this.number === 1 ? '' : 's';
         },
+        clickAble() {
+            return this.number === 0 ? 'able' : 'disabled';
+        }
     },
     methods: {
         clickHandler(index) {
-            // this.traits[index].selected = !this.traits[index].selected;
+            const prevSelected = this.traits[index].selected;
+
+            if (this.number <= 0 && !prevSelected) return;
+
+            this.number -= prevSelected ? -1 : 1;
+            this.traits[index].selected = !prevSelected;
         },
+        backHandler() {
+            this.$router.push({
+                name: 'Who',
+            });
+        },
+        ifActive(index) {
+            return this.traits[index].selected ? 'active' : 'inactive';
+        },
+        nextHandler() {
+            if (this.number !== 0) return;
+
+            const array = [];
+
+            this.traits.forEach((trait, i) => {
+                if (trait.selected) {
+                    array.push(i);
+                }
+            });
+
+            this.$router.push({
+                name: 'Showcase',
+                query: {
+                    p_id: this.p_id,
+                    traits_id: array,
+                },
+            });
+        },
+    },
+    watch: {
+        '$route' (to, from) {
+          // 对路由变化作出响应...
+          const p_id = to.params.p_id;
+
+          this.p_id = p_id;
+
+          this.$store.commit('changeWho', {
+              choice: p_id,
+          });
+        }
     },
 }
 </script>

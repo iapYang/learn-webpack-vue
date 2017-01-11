@@ -7,7 +7,10 @@ const store = new Vuex.Store({
     state: {
         count: 0,
         who: {
-            choice: -1,
+            // choice
+        },
+        trait: {
+            // choices
         },
     },
     mutations: {
@@ -16,6 +19,9 @@ const store = new Vuex.Store({
         },
         changeWho(state, payload) {
             state.who.choice = payload.choice;
+        },
+        changeTrait(state, payload) {
+            state.trait.choices = payload.choices;
         },
     },
 });

@@ -12,6 +12,7 @@ import Refinery from './components/Refinery.vue';
 import Welcome from './components/content/Welcome.vue';
 import Who from './components/content/Who.vue';
 import Trait from './components/content/Trait.vue';
+import Showcase from './components/content/Showcase.vue';
 
 Vue.use(VueRouter);
 
@@ -55,6 +56,10 @@ const routes = [{
         path: 'trait',
         name: 'Trait',
         component: Trait,
+    }, {
+        path: 'showcase',
+        name: 'Showcase',
+        component: Showcase,
     }],
 }];
 
