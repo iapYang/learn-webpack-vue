@@ -28,7 +28,7 @@ export default {
         });
     },
     mounted() {
-        this.$store.dispatch('performProducts');
+        this.$store.dispatch('performRawData');
     },
     methods: {
 

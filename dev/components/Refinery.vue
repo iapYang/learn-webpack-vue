@@ -5,16 +5,19 @@
             <div class="content-container">
                 <router-view></router-view>
             </div>
+            <global-control></global-control>
         </div>
     </div>
 </template>
 
 <script>
 import RHeader from './RHeader.vue';
+import GlobalControl from './GlobalControl.vue';
 
 export default {
     components: {
         RHeader,
+        GlobalControl,
     },
 }
 </script>

@@ -19,6 +19,7 @@ const store = new Vuex.Store({
         ifProductsLoaded: false,
         rawData: {},
         products: [],
+        ifGlobalControl: false,
     },
     mutations: {
         increment(state) {
@@ -36,33 +37,43 @@ const store = new Vuex.Store({
             state.rawData = payload.rawData;
             state.products = payload.products;
         },
-
     },
     getters: {
 
     },
     actions: {
-        performProducts({commit, state}) {
-            Utils.fetchData(rawData => {
-                const who_name = Database.pictures[state.who.choice].gsx$person;
-
-                let products_array = [];
-                state.trait.choices.forEach(id => {
-                    const trait_name = Database.traits[id].gsx$trait;
-
-                    products_array = [...products_array, ...rawData[who_name][trait_name]];
+        performRawData({dispatch, commit, state}) {
+            if (state.ifRawLoaded) {
+                dispatch('performProducts', {
+                    rawData: state.rawData,
                 });
-
-                console.log(products_array);
-
-                // to perform as its pictures loaded
-                setTimeout(() => {
-                    commit('productsLoaded', {
+            } else {
+                Utils.fetchData(rawData => {
+                    dispatch('performProducts', {
                         rawData,
-                        products: products_array,
                     });
-                }, 2000);
+                });
+            }
+        },
+        performProducts({commit, state}, {rawData}) {
+            const who_name = Database.pictures[state.who.choice].gsx$person;
+
+            let products_array = [];
+            state.trait.choices.forEach(id => {
+                const trait_name = Database.traits[id].gsx$trait;
+
+                products_array = [...products_array, ...rawData[who_name][trait_name]];
             });
+
+            console.log(products_array);
+
+            // to perform as its pictures loaded
+            setTimeout(() => {
+                commit('productsLoaded', {
+                    rawData,
+                    products: products_array,
+                });
+            }, 2000);
         },
     },
 });
