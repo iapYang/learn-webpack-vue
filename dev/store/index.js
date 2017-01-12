@@ -37,6 +37,9 @@ const store = new Vuex.Store({
             state.rawData = payload.rawData;
             state.products = payload.products;
         },
+        changeGlobal(state, payload) {
+            state.ifGlobalControl = payload.shown;
+        },
     },
     getters: {
 

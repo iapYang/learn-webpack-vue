@@ -5,7 +5,7 @@
             <div class="content-container">
                 <router-view></router-view>
             </div>
-            <global-control></global-control>
+            <global-control v-show="$store.state.ifGlobalControl"></global-control>
         </div>
     </div>
 </template>
@@ -19,6 +19,13 @@ export default {
         RHeader,
         GlobalControl,
     },
+    watch: {
+        '$route' (to, from) {
+            this.$store.commit('changeGlobal', {
+                shown: (!to.query.p_id && !to.query.traits) ? true : false,
+            });
+        }
+    }
 }
 </script>
 
