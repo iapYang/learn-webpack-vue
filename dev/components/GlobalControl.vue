@@ -1,14 +1,16 @@
 <template lang="html">
-    <div class='globalControl'>
+    <div class='globalControl' v-if="ifProductsLoaded">
         <div class='content-wrapper'>
             <div
                 class='choose choose-person'
+                @click="personClickHandler"
                 >
                 <span class='text'>person</span>
                 <span class='symbol show-desktop'>y</span>
             </div>
             <div
                 class='choose choose-trait'
+                @click="traitClickHandler"
                 >
                 <span class='text'>
                     traits
@@ -21,7 +23,42 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
+    computed: {
+        ...mapGetters({
+            ifProductsLoaded: 'getifProductsLoaded',
+        }),
+    },
+    methods: {
+        personClickHandler() {
+            if (this.$route.name === 'Showcase') {
+                this.$router.push({
+                    name: 'Who',
+                    query: this.$route.query,
+                });
+            } else {
+                this.$router.push({
+                    name: 'Showcase',
+                    query: this.$route.query,
+                });
+            }
+        },
+        traitClickHandler() {
+            if (this.$route.name === 'Showcase') {
+                this.$router.push({
+                    name: 'Trait',
+                    query: this.$route.query,
+                });
+            } else {
+                this.$router.push({
+                    name: 'Showcase',
+                    query: this.$route.query,
+                });
+            }
+        }
+    }
 }
 </script>
 
@@ -66,6 +103,14 @@ export default {
 
             .symbol {
                 font-family: refinery29;
+            }
+
+            &:hover {
+                background-color: #fff;
+
+                span {
+                    color: #ce912c;
+                }
             }
         }
 

@@ -35,6 +35,8 @@
 <script>
 import Database from '../../modules/Database.js';
 
+import { mapMutations } from 'vuex';
+
 export default {
     data() {
         const choice = parseInt(this.$store.state.who.choice);
@@ -54,10 +56,14 @@ export default {
         ifActive: function(i) {
             return this.choice === i ? 'active' : 'inactive';
         },
+        ...mapMutations([
+            'changeWho'
+        ]),
         nextHandler() {
-            this.$store.commit('changeWho', {
+            this.changeWho({
                 choice: this.choice,
             });
+
             this.$router.push({
                 name: 'Trait',
                 query: {

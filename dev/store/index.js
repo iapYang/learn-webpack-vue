@@ -20,6 +20,18 @@ const store = new Vuex.Store({
         rawData: {},
         products: [],
         ifGlobalControl: false,
+        ifLoading: false,
+    },
+    getters: {
+        getifProductsLoaded(state) {
+            return state.ifProductsLoaded;
+        },
+        getWhoName(state) {
+            return Database.pictures[state.who.choice].name;
+        },
+        getWhoChoice(state) {
+            return state.who.choice;
+        },
     },
     mutations: {
         increment(state) {
@@ -31,18 +43,22 @@ const store = new Vuex.Store({
         changeTrait(state, payload) {
             state.trait.choices = payload.choices;
         },
-        productsLoaded(state, payload) {
-            state.ifProductsLoaded = true;
+        rawDataLoaded(state, payload) {
             state.ifRawLoaded = true;
             state.rawData = payload.rawData;
+        },
+        productsLoaded(state, payload) {
+            console.log('change products state');
+            state.ifProductsLoaded = true;
+            state.ifLoading = false;
             state.products = payload.products;
         },
         changeGlobal(state, payload) {
             state.ifGlobalControl = payload.shown;
         },
-    },
-    getters: {
-
+        setLoading(state, payload) {
+            state.ifLoading = payload.ifLoading;
+        },
     },
     actions: {
         performRawData({dispatch, commit, state}) {
@@ -52,6 +68,10 @@ const store = new Vuex.Store({
                 });
             } else {
                 Utils.fetchData(rawData => {
+                    commit('rawDataLoaded', {
+                        rawData,
+                    });
+
                     dispatch('performProducts', {
                         rawData,
                     });
@@ -73,10 +93,12 @@ const store = new Vuex.Store({
             // to perform as its pictures loaded
             setTimeout(() => {
                 commit('productsLoaded', {
-                    rawData,
                     products: products_array,
                 });
             }, 2000);
+        },
+        performDefaultData({commit, state}, {p_id, traits_id}) {
+            console.log(p_id, traits_id);
         },
     },
 });

@@ -1,13 +1,13 @@
 <template lang="html">
     <div class="showcase-container">
-        <loading v-if="!$store.state.ifProductsLoaded"></loading>
-        <showcase-content v-else></showcase-content>
+        <showcase-content v-if="$store.state.ifProductsLoaded"></showcase-content>
 </template>
 
 <script>
 import IScroll from 'iscroll';
 
-import Loading from './Loading.vue';
+import { mapMutations } from 'vuex';
+
 import ShowcaseContent from './ShowcaseContent.vue';
 
 export default {
@@ -26,15 +26,21 @@ export default {
         this.$store.commit('changeTrait', {
             choices: traits_id,
         });
+
+        this.setLoading({
+            ifLoading: true,
+        });
+
     },
     mounted() {
         this.$store.dispatch('performRawData');
     },
     methods: {
-
+        ...mapMutations([
+            'setLoading',
+        ]),
     },
     components: {
-        Loading,
         ShowcaseContent,
     },
     computed: {

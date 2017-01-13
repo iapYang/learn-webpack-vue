@@ -6,6 +6,7 @@
                 <router-view></router-view>
             </div>
             <global-control v-show="$store.state.ifGlobalControl"></global-control>
+            <loading v-if="$store.state.ifLoading"></loading>
         </div>
     </div>
 </template>
@@ -13,18 +14,48 @@
 <script>
 import RHeader from './RHeader.vue';
 import GlobalControl from './GlobalControl.vue';
+import Loading from './Loading.vue';
+
+import { mapMutations } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
     components: {
         RHeader,
         GlobalControl,
+        Loading,
+    },
+    methods: {
+        ...mapMutations([
+            'changeGlobal',
+        ]),
+        changeGlobalHandler(to, vm) {
+            vm.changeGlobal({
+                shown: typeof(to.query.p_id) !== 'undefined' && typeof(to.query.traits_id) !== 'undefined',
+            });
+        },
+        ...mapActions([
+            'performDefaultData'
+        ]),
+    },
+    beforeRouteEnter (to, from, next) {
+        next(vm => {
+        // 通过 `vm` 访问组件实例
+            vm.changeGlobalHandler(to, vm);
+            vm.performDefaultData({
+                p_id: to.query.p_id,
+                traits_id: to.query.traits_id,
+            });
+        });
     },
     watch: {
         '$route' (to, from) {
-            this.$store.commit('changeGlobal', {
-                shown: (!to.query.p_id && !to.query.traits) ? true : false,
+            this.changeGlobalHandler(to, this);
+            this.performDefaultData({
+                p_id: to.query.p_id,
+                traits_id: to.query.traits_id,
             });
-        }
+        },
     }
 }
 </script>

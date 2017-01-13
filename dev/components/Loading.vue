@@ -4,7 +4,7 @@
             <span>the search is on...</span>
         </div>
         <div class='wrapper'>
-            <img src='../../images/loading.gif'/>
+            <img src='../images/loading.gif'/>
         </div>
     </div>
 </template>
@@ -15,8 +15,11 @@ export default {
 </script>
 
 <style lang="scss">
-#refinery .content-container .loading-container {
+#refinery .loading-container {
     position: absolute;
+    width: 100%;
+    top: 50px;
+    bottom: 0;
     background-color: #fcf3f4;
     z-index: 2;
 
@@ -37,6 +40,11 @@ export default {
 
     .wrapper {
         width: 250px;
+        position: absolute;
+        text-align: center;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
     }
 }
 </style>

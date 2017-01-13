@@ -56,6 +56,9 @@
 import Database from '../../modules/Database.js';
 import Utils from '../../modules/Utils.js';
 
+import { mapMutations } from 'vuex';
+import { mapGetters } from 'vuex';
+
 export default {
     data() {
         let p_id = this.$store.state.who.choice;
@@ -63,7 +66,7 @@ export default {
         if (!p_id) {
             p_id = this.$route.query.p_id;
 
-            this.$store.commit('changeWho', {
+            this.changeWho({
                 choice: p_id,
             });
         }
@@ -71,21 +74,24 @@ export default {
         return {
             number: 3,
             traits: Utils.copyArray(Database.traits),
-            p_id,
         }
     },
     computed: {
-        who() {
-            return Database.pictures[this.p_id].name;
-        },
         plural() {
             return this.number === 1 ? '' : 's';
         },
         clickAble() {
             return this.number === 0 ? 'able' : 'disabled';
-        }
+        },
+        ...mapGetters({
+            who: 'getWhoName',
+            p_id: 'getWhoChoice',
+        }),
     },
     methods: {
+        ...mapMutations([
+            'changeWho',
+        ]),
         clickHandler(index) {
             const prevSelected = this.traits[index].selected;
 
