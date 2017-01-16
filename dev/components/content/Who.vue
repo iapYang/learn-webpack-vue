@@ -45,8 +45,17 @@ export default {
             pictures: Database.pictures,
         }
     },
-    mounted() {
-        console.log(this.choice);
+    computed: {
+        ifClickAble() {
+            return (this.choice >=0 && this.choice < Database.pictures.length) ? 'able' : 'disabled';
+        },
+        ...mapGetters({
+            default_choice: 'getWhoChoice',
+            trait_choices: 'getTraitChoices',
+            ifGlobalControl: 'getifGlobalControl',
+        }),
+    },
+    created() {
         this.choice = this.default_choice;
     },
     methods: {
@@ -67,27 +76,24 @@ export default {
                 choice: this.choice,
             });
 
-            this.$router.push({
-                name: 'Trait',
-                query: {
-                    p_id: this.choice,
-                },
-            });
+            if (this.ifGlobalControl) {
+                this.$router.push({
+                    name: 'Showcase',
+                    query: {
+                        p_id: this.choice,
+                        traits_id: this.trait_choices,    
+                    },
+                });
+            } else {
+                this.$router.push({
+                    name: 'Trait',
+                    query: {
+                        p_id: this.choice,
+                    },
+                });
+            }
         },
     },
-    computed: {
-        ifClickAble() {
-            return (this.choice >=0 && this.choice < Database.pictures.length) ? 'able' : 'disabled';
-        },
-        ...mapGetters({
-            default_choice: 'getWhoChoice',
-        }),
-    },
-    watch: {
-        'default_choice' () {
-            this.choice = this.default_choice;
-        },
-    }
 }
 </script>
 

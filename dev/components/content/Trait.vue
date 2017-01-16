@@ -76,7 +76,16 @@ export default {
         ...mapGetters({
             who: 'getWhoName',
             p_id: 'getWhoChoice',
+            choices: 'getTraitChoices',
         }),
+    },
+    created() {
+        this.choices.forEach(choice => {
+            if (choice >= 0) {
+                this.traits[choice].selected = true;
+                this.number = this.number - 1;
+            }
+        });
     },
     methods: {
         ...mapMutations([
@@ -117,18 +126,6 @@ export default {
                 },
             });
         },
-    },
-    watch: {
-        '$route' (to, from) {
-          // 对路由变化作出响应...
-          const p_id = to.params.p_id;
-
-          this.p_id = p_id;
-
-          this.$store.commit('changeWho', {
-              choice: p_id,
-          });
-        }
     },
 }
 </script>

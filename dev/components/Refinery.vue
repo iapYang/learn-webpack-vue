@@ -5,8 +5,8 @@
             <div class="content-container">
                 <router-view></router-view>
             </div>
-            <global-control v-show="$store.state.ifGlobalControl"></global-control>
-            <loading v-if="$store.state.ifLoading"></loading>
+            <global-control v-show="ifGlobalControl"></global-control>
+            <loading v-show="ifLoading"></loading>
         </div>
     </div>
 </template>
@@ -16,8 +16,7 @@ import RHeader from './RHeader.vue';
 import GlobalControl from './GlobalControl.vue';
 import Loading from './Loading.vue';
 
-import { mapMutations } from 'vuex';
-import { mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
     components: {
@@ -25,8 +24,11 @@ export default {
         GlobalControl,
         Loading,
     },
-    methods: {
-        
+    computed: {
+        ...mapGetters({
+            ifGlobalControl: 'getifGlobalControl',
+            ifLoading: 'getifLoading',
+        }),
     },
 }
 </script>

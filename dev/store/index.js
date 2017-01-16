@@ -34,6 +34,15 @@ const store = new Vuex.Store({
         getWhoChoice(state) {
             return state.who.choice;
         },
+        getTraitChoices(state) {
+            return state.trait.choices;
+        },
+        getifGlobalControl(state) {
+            return state.ifGlobalControl;
+        },
+        getifLoading(state) {
+            return state.ifLoading;
+        },
     },
     mutations: {
         increment(state) {

@@ -13,7 +13,7 @@
                 @click="traitClickHandler"
                 >
                 <span class='text'>
-                    traits
+                    {{ trait_text }}
                 </span>
                 <span class='symbol show-desktop'>y</span>
             </div>
@@ -26,6 +26,11 @@
 import { mapGetters } from 'vuex'
 
 export default {
+    data() {
+        return {
+            trait_text: 'traits',
+        }
+    },
     computed: {
         ...mapGetters({
             ifProductsLoaded: 'getifProductsLoaded',
@@ -34,11 +39,15 @@ export default {
     methods: {
         personClickHandler() {
             if (this.$route.name === 'Showcase') {
+                this.trait_text = 'personalities';
+
                 this.$router.push({
                     name: 'Who',
                     query: this.$route.query,
                 });
             } else {
+                this.trait_text = 'traits';
+
                 this.$router.push({
                     name: 'Showcase',
                     query: this.$route.query,
