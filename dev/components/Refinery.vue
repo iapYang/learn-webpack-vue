@@ -26,28 +26,8 @@ export default {
         Loading,
     },
     methods: {
-        ...mapMutations([
-            'changeGlobal',
-        ]),
-        routerHandler(to, vm) {
-            vm.changeGlobal({
-                shown: typeof(to.query.p_id) !== 'undefined' && typeof(to.query.traits_id) !== 'undefined',
-            });
-
-            vm.performDefaultData({
-                p_id: to.query.p_id,
-                traits_id: to.query.traits_id,
-            });
-        },
-        ...mapActions([
-            'performDefaultData'
-        ]),
+        
     },
-    watch: {
-        // '$route' (to, from) {
-        //     this.routerHandler(to, this);
-        // },
-    }
 }
 </script>
 
