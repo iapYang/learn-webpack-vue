@@ -61,16 +61,6 @@ import { mapGetters } from 'vuex';
 
 export default {
     data() {
-        let p_id = this.$store.state.who.choice;
-
-        if (!p_id) {
-            p_id = this.$route.query.p_id;
-
-            this.changeWho({
-                choice: p_id,
-            });
-        }
-
         return {
             number: 3,
             traits: Utils.copyArray(Database.traits),

@@ -35,16 +35,19 @@
 <script>
 import Database from '../../modules/Database.js';
 
+import { mapGetters } from 'vuex';
 import { mapMutations } from 'vuex';
 
 export default {
     data() {
-        const choice = parseInt(this.$store.state.who.choice);
-
         return {
+            choice: -1,
             pictures: Database.pictures,
-            choice: typeof(choice) === 'undefined' ? -1 : choice,
         }
+    },
+    mounted() {
+        console.log(this.choice);
+        this.choice = this.default_choice;
     },
     methods: {
         imgSrc: function(src) {
@@ -76,7 +79,15 @@ export default {
         ifClickAble() {
             return (this.choice >=0 && this.choice < Database.pictures.length) ? 'able' : 'disabled';
         },
+        ...mapGetters({
+            default_choice: 'getWhoChoice',
+        }),
     },
+    watch: {
+        'default_choice' () {
+            this.choice = this.default_choice;
+        },
+    }
 }
 </script>
 

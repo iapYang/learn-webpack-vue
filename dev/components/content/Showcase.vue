@@ -12,25 +12,9 @@ import ShowcaseContent from './ShowcaseContent.vue';
 
 export default {
     created() {
-        const p_id = parseInt(this.$route.query.p_id);
-        const traits_id = this.$route.query.traits_id;
-
-        traits_id.forEach(trait_id => {
-            trait_id = parseInt(trait_id);
-        });
-
-        this.$store.commit('changeWho', {
-            choice: p_id,
-        });
-
-        this.$store.commit('changeTrait', {
-            choices: traits_id,
-        });
-
         this.setLoading({
             ifLoading: true,
         });
-
     },
     mounted() {
         this.$store.dispatch('performRawData');

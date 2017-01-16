@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import store from './store';
+
 import Tutorial from './components/Tutorial.vue';
 import Navigation from './components/tutorial/Navigation.vue';
 import Editor from './components/tutorial/Editor.vue';
@@ -65,6 +67,19 @@ const routes = [{
 
 const router = new VueRouter({
     routes,
+});
+
+router.beforeEach((to, from, next) => {
+    store.commit('changeGlobal', {
+        shown: typeof to.query.p_id !== 'undefined' && typeof to.query.traits_id !== 'undefined',
+    });
+
+    store.dispatch('performDefaultData', {
+        p_id: to.query.p_id,
+        traits_id: to.query.traits_id,
+    });
+
+    next();
 });
 
 export default router;

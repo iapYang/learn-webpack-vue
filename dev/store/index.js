@@ -10,10 +10,12 @@ const store = new Vuex.Store({
     state: {
         count: 0,
         who: {
-            // choice
+            // default choice
+            choice: -1,
         },
         trait: {
-            // choices
+            // default choices
+            choices: [-1, -1, -1],
         },
         ifRawLoaded: false,
         ifProductsLoaded: false,
@@ -59,6 +61,15 @@ const store = new Vuex.Store({
         setLoading(state, payload) {
             state.ifLoading = payload.ifLoading;
         },
+        setDefaultData(state, payload) {
+            if (typeof payload.who_choice !== 'undefined') {
+                state.who.choice = payload.who_choice;
+            }
+
+            if (typeof payload.trait_choices !== 'undefined') {
+                state.trait.choices = payload.trait_choices;
+            }
+        },
     },
     actions: {
         performRawData({dispatch, commit, state}) {
@@ -88,8 +99,6 @@ const store = new Vuex.Store({
                 products_array = [...products_array, ...rawData[who_name][trait_name]];
             });
 
-            console.log(products_array);
-
             // to perform as its pictures loaded
             setTimeout(() => {
                 commit('productsLoaded', {
@@ -98,7 +107,26 @@ const store = new Vuex.Store({
             }, 2000);
         },
         performDefaultData({commit, state}, {p_id, traits_id}) {
-            console.log(p_id, traits_id);
+            let who_choice, trait_choices;
+
+            // change the data from string to int
+            if (typeof p_id !== 'undefined') {
+                who_choice = parseInt(p_id, 10);
+            }
+
+            if (typeof traits_id !== 'undefined') {
+                trait_choices = [];
+                traits_id.forEach((trait_id, i) => {
+                    trait_choices.push(parseInt(trait_id, 10));
+                });
+            }
+
+            commit('setDefaultData', {
+                who_choice,
+                trait_choices,
+            });
+
+            console.log(who_choice, trait_choices);
         },
     },
 });

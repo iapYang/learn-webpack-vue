@@ -29,33 +29,24 @@ export default {
         ...mapMutations([
             'changeGlobal',
         ]),
-        changeGlobalHandler(to, vm) {
+        routerHandler(to, vm) {
             vm.changeGlobal({
                 shown: typeof(to.query.p_id) !== 'undefined' && typeof(to.query.traits_id) !== 'undefined',
+            });
+
+            vm.performDefaultData({
+                p_id: to.query.p_id,
+                traits_id: to.query.traits_id,
             });
         },
         ...mapActions([
             'performDefaultData'
         ]),
     },
-    beforeRouteEnter (to, from, next) {
-        next(vm => {
-        // 通过 `vm` 访问组件实例
-            vm.changeGlobalHandler(to, vm);
-            vm.performDefaultData({
-                p_id: to.query.p_id,
-                traits_id: to.query.traits_id,
-            });
-        });
-    },
     watch: {
-        '$route' (to, from) {
-            this.changeGlobalHandler(to, this);
-            this.performDefaultData({
-                p_id: to.query.p_id,
-                traits_id: to.query.traits_id,
-            });
-        },
+        // '$route' (to, from) {
+        //     this.routerHandler(to, this);
+        // },
     }
 }
 </script>
