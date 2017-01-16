@@ -1,8 +1,9 @@
 <template lang="html">
-    <div class='globalControl' v-if="ifProductsLoaded">
+    <div class='globalControl'>
         <div class='content-wrapper'>
             <div
                 class='choose choose-person'
+                :class="{active: ifPersonActive}"
                 @click="personClickHandler"
                 >
                 <span class='text'>person</span>
@@ -10,6 +11,7 @@
             </div>
             <div
                 class='choose choose-trait'
+                :class="{active: ifTraitActive}"
                 @click="traitClickHandler"
                 >
                 <span class='text'>
@@ -26,43 +28,47 @@
 import { mapGetters } from 'vuex'
 
 export default {
-    data() {
-        return {
-            trait_text: 'traits',
-        }
-    },
     computed: {
         ...mapGetters({
             ifProductsLoaded: 'getifProductsLoaded',
         }),
+        ifPersonActive() {
+            return this.$route.name === 'Who';
+        },
+        ifTraitActive() {
+            return this.$route.name === 'Trait'
+        },
+        trait_text() {
+            return this.$route.name === 'Showcase' ? 'traits' : 'personalities';
+        }
     },
     methods: {
         personClickHandler() {
-            if (this.$route.name === 'Showcase') {
-                this.trait_text = 'personalities';
+            this.ifPersonActive = !this.ifPersonActive;
 
+            if (this.$route.name === 'Who') {
                 this.$router.push({
-                    name: 'Who',
+                    name: 'Showcase',
                     query: this.$route.query,
                 });
             } else {
-                this.trait_text = 'traits';
-
                 this.$router.push({
-                    name: 'Showcase',
+                    name: 'Who',
                     query: this.$route.query,
                 });
             }
         },
         traitClickHandler() {
-            if (this.$route.name === 'Showcase') {
+            this.ifTraitActive = !this.ifTraitActive;
+
+            if (this.$route.name === 'Trait') {
                 this.$router.push({
-                    name: 'Trait',
+                    name: 'Showcase',
                     query: this.$route.query,
                 });
             } else {
                 this.$router.push({
-                    name: 'Showcase',
+                    name: 'Trait',
                     query: this.$route.query,
                 });
             }
@@ -114,11 +120,17 @@ export default {
                 font-family: refinery29;
             }
 
-            &:hover {
+            &:hover, &.active {
                 background-color: #fff;
 
                 span {
                     color: #ce912c;
+                }
+            }
+
+            &.active {
+                .symbol {
+                    transform: rotate(180deg);
                 }
             }
         }
