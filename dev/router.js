@@ -70,7 +70,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    store.commit('changeGlobal', {
+    store.dispatch('changeGlobal', {
         shown: typeof to.query.p_id !== 'undefined' && typeof to.query.traits_id !== 'undefined',
     });
 

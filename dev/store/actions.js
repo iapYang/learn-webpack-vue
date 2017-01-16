@@ -5,18 +5,15 @@ import PictureLoader from '../modules/PictureLoader.js';
 PictureLoader.useStorage = false;
 
 export default {
-    changeWhoChoice({dispatch, commit, state}, {choice}) {
-        commit('changeWho', {
-            choice,
+    changeLoading({commit, state}, {ifLoading}) {
+        commit('setLoading', {
+            ifLoading,
         });
     },
-    changeTraitChoices({dispatch, commit, state}, {choices}) {
-        commit('changeWho', {
-            choices,
+    changeGlobal({commit, state}, {shown}) {
+        commit('setGlobal', {
+            shown,
         });
-    },
-    changeAllChoices({dispatch, commit, state}, {}) {
-
     },
     performRawData({dispatch, commit, state}) {
         if (state.ifRawLoaded) {

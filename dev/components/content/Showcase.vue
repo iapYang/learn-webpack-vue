@@ -1,34 +1,38 @@
 <template lang="html">
     <div class="showcase-container">
-        <showcase-content v-if="$store.state.ifProductsLoaded"></showcase-content>
+        <showcase-content v-if="ifProductsLoaded"></showcase-content>
 </template>
 
 <script>
 import IScroll from 'iscroll';
 
-import { mapMutations } from 'vuex';
+import { mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 
 import ShowcaseContent from './ShowcaseContent.vue';
 
 export default {
     created() {
-        this.setLoading({
+        this.changeLoading({
             ifLoading: true,
         });
     },
     mounted() {
-        this.$store.dispatch('performRawData');
+        this.performRawData();
     },
     methods: {
-        ...mapMutations([
-            'setLoading',
+        ...mapActions([
+            'performRawData',
+            'changeLoading',
         ]),
     },
     components: {
         ShowcaseContent,
     },
     computed: {
-
+        ...mapGetters({
+            ifProductsLoaded: 'getifProductsLoaded',
+        }),
     },
 }
 </script>

@@ -9,7 +9,7 @@
             </div>
             <ul class="product-list">
                 <li
-                v-for="product,i in $store.state.products"
+                v-for="product,i in products"
                 >
                     <a target='_blank' :href="product.clickouturl">
                         <div class='left'>
@@ -56,18 +56,10 @@ export default {
             scroll.refresh();
         });
     },
-    methods: {
-
-    },
-    components: {
-
-    },
     computed: {
-        products() {
-            console.log(this.$store.state.products);
-
-            return this.$store.state.products;
-        },
+        ...mapGetters({
+            products: 'getProducts',
+        }),
     },
 }
 </script>
@@ -180,6 +172,11 @@ export default {
                                 font-size: 16px;
                             }
                         }
+                    }
+
+                    &:hover a .right .btn-buy {
+                        background-color: #ce912c;
+                        color: #fff;
                     }
                 }
             }

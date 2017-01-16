@@ -13,6 +13,9 @@ export default {
     getTraitChoices(state) {
         return state.trait.choices;
     },
+    getProducts(state) {
+        return state.products;
+    },
     getifGlobalControl(state) {
         return state.ifGlobalControl;
     },
