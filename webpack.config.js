@@ -72,7 +72,10 @@ module.exports = {
         }, {
             test: /\.vue$/,
             loader: 'vue',
-        },],
+        }, {
+            test: /\.(png|gif)$/,
+            loader: "url-loader?mimetype=image/png",
+        }],
     },
     vue: {
         loaders: {

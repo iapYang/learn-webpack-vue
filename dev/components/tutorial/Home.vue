@@ -3,6 +3,7 @@
         <ul>
             <li
             v-for="item in items"
+            :key='item'
             @click="clickHandler(item)"
             :class="{ active: item['router-name'] === current_name }"
             >
