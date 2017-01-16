@@ -56,7 +56,6 @@
 import Database from '../../modules/Database.js';
 import Utils from '../../modules/Utils.js';
 
-import { mapMutations } from 'vuex';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -88,9 +87,6 @@ export default {
         });
     },
     methods: {
-        ...mapMutations([
-            'changeWho',
-        ]),
         clickHandler(index) {
             const prevSelected = this.traits[index].selected;
 

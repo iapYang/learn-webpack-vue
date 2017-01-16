@@ -34,9 +34,9 @@
 
 <script>
 import Database from '../../modules/Database.js';
+import Utils from '../../modules/Utils.js';
 
 import { mapGetters } from 'vuex';
-import { mapMutations } from 'vuex';
 
 export default {
     data() {
@@ -68,29 +68,40 @@ export default {
         ifActive: function(i) {
             return this.choice === i ? 'active' : 'inactive';
         },
-        ...mapMutations([
-            'changeWho'
-        ]),
         nextHandler() {
-            this.changeWho({
-                choice: this.choice,
-            });
+            if (this.choice == 5) {
+                const p_id = Utils.shuffle(Utils.initArray(Database.pictures.length))[0];
 
-            if (this.ifGlobalControl) {
+                const traits_id = [];
+                const tmp_traits_id = Utils.shuffle(Utils.initArray(Database.traits.length));
+                for (let i = 0; i < 3; i++) {
+                    traits_id.push(tmp_traits_id[i]);
+                }
+
                 this.$router.push({
                     name: 'Showcase',
                     query: {
-                        p_id: this.choice,
-                        traits_id: this.trait_choices,    
+                        p_id,
+                        traits_id: Utils.quickOrder(traits_id),
                     },
                 });
             } else {
-                this.$router.push({
-                    name: 'Trait',
-                    query: {
-                        p_id: this.choice,
-                    },
-                });
+                if (this.ifGlobalControl) {
+                    this.$router.push({
+                        name: 'Showcase',
+                        query: {
+                            p_id: this.choice,
+                            traits_id: this.trait_choices,
+                        },
+                    });
+                } else {
+                    this.$router.push({
+                        name: 'Trait',
+                        query: {
+                            p_id: this.choice,
+                        },
+                    });
+                }
             }
         },
     },
@@ -128,6 +139,7 @@ export default {
 
                 img {
                     transition: all ease 0.3s;
+                    transform: translate3d(0,0,0);
                 }
 
                 .normal {
@@ -164,7 +176,7 @@ export default {
                         opacity: 1;
                     }
 
-                    .noraml {
+                    .normal {
                         opacity: 0;
                     }
                 }

@@ -1,50 +1,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import state from './state';
+import getters from './getters';
 import actions from './actions';
-
-import Database from '../modules/Database.js';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-    state: {
-        count: 0,
-        who: {
-            // default choice
-            choice: -1,
-        },
-        trait: {
-            // default choices
-            choices: [-1, -1, -1],
-        },
-        ifRawLoaded: false,
-        ifProductsLoaded: false,
-        rawData: {},
-        products: [],
-        ifGlobalControl: false,
-        ifLoading: false,
-    },
-    getters: {
-        getifProductsLoaded(state) {
-            return state.ifProductsLoaded;
-        },
-        getWhoName(state) {
-            return Database.pictures[state.who.choice].name;
-        },
-        getWhoChoice(state) {
-            return state.who.choice;
-        },
-        getTraitChoices(state) {
-            return state.trait.choices;
-        },
-        getifGlobalControl(state) {
-            return state.ifGlobalControl;
-        },
-        getifLoading(state) {
-            return state.ifLoading;
-        },
-    },
+    state,
+    getters,
     mutations: {
         increment(state) {
             state.count = state.count + 1;

@@ -1,23 +1,3 @@
-module.shuffle = array => {
-    let currentIndex = array.length,
-        temporaryValue,
-        randomIndex;
-
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-
-        // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-};
-
 module.copyArray = array => {
     const arrayNew = [];
 
@@ -105,6 +85,26 @@ module.initArray = length => {
     }
 
     return array;
+};
+
+module.quickOrder = arr => {
+    if (arr.length <= 1) return arr;
+
+    const pivotIndex = Math.floor(arr.length / 2);
+    const pivot = arr[pivotIndex];
+
+    const left = [];
+    const right = [];
+
+    arr.forEach(item => {
+        if (item < pivot) {
+            left.push(item);
+        } else if (item > pivot) {
+            right.push(item);
+        }
+    });
+
+    return [...module.quickOrder(left), pivot, ...module.quickOrder(right)];
 };
 
 export default module;
