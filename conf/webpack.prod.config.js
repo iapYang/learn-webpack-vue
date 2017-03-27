@@ -38,7 +38,7 @@ module.exports = merge(baseWebpackConfig, {
                 '*.html',
                 'router.js',
                 'styles/**/*',
-                'script/**/*',
+                'modules/**/*',
                 'store/**/*',
                 'images/ignore/**/*',
                 'components/**/*',

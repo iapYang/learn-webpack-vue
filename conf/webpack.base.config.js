@@ -3,7 +3,8 @@ const glob = require('glob');
 const webpack = require('webpack');
 const postcssConfig = require('./postcss.config.js');
 
-const fontPath = path.resolve(process.cwd(), 'dev/font');
+const fontPath = path.resolve(process.cwd(), 'dev/fonts');
+const picPath = path.resolve(process.cwd(), 'dev/images');
 
 const jsFiles = glob.sync('./dev/script/*.js');
 const entry = {};
@@ -88,6 +89,9 @@ module.exports = {
                         noquotes: true,
                     },
                 }],
+                include: [
+                    picPath,
+                ],
             },
         ],
     },

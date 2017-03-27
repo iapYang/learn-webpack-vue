@@ -30,5 +30,8 @@ html {
 
 .app-container{
     position: relative;
+    max-width: 1500px;
+    margin: 0 auto;
+    background-color: #fcf3f4;
 }
 </style>
