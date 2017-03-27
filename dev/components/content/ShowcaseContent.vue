@@ -5,7 +5,7 @@
         >
         <div class='content-wrapper'>
             <div class='title'>
-                <img src='../../images/picks.png' />
+                <img src='images/picks.png' />
             </div>
             <ul class="product-list">
                 <li

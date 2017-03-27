@@ -5,7 +5,7 @@
                 @click='clickHandler'
                 >
                 <div class='logo'>
-                    <img src='../images/logo.svg' />
+                    <img src='images/logo.svg' />
                 </div>
             </a>
 

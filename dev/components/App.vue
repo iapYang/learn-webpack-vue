@@ -28,6 +28,10 @@ html {
     height: 100%;
 }
 
+#app {
+    background-color: #fcf3f4;    
+}
+
 .app-container{
     position: relative;
     max-width: 1500px;

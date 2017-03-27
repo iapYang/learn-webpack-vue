@@ -33,7 +33,7 @@
                 >
                 <div class="circle-container">
                     <div class='circle'></div>
-                    <img class='circle-hover' src='../../images/circle_hover.png'/>
+                    <img class='circle-hover' src='images/circle_hover.png'/>
                 </div>
                 <div class='name'>
                     <span>{{ trait.name }}</span>

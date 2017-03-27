@@ -4,7 +4,7 @@
             <span>the search is on...</span>
         </div>
         <div class='wrapper'>
-            <img src='../images/loading.gif'/>
+            <img src='images/loading.gif'/>
         </div>
     </div>
 </template>

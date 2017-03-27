@@ -60,7 +60,7 @@ export default {
     },
     methods: {
         imgSrc: function(src) {
-            return `../../images/${src}`
+            return `images/${src}`
         },
         clickHandler: function(index) {
             this.choice = index;

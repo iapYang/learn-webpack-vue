@@ -2,10 +2,10 @@
     <div class='welcome frame'>
         <div class='wrapper'>
             <div class='logo'>
-                <img src="../../images/logo.png" alt="">
+                <img src="images/logo.png" alt="">
             </div>
             <div class='title'>
-                <img src="../../images/entrance.gif" alt="">
+                <img src="images/entrance.gif" alt="">
             </div>
             <div class='desc'>
                 <span>
