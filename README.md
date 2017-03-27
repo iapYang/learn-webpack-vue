@@ -1,92 +1,58 @@
-# Webpack & Vue
+# website-template
 
-## 使用步骤：
+## 环境
 
-1. 安装node包
+- 框架：vue
+- 样式：sass+postcss
+- 脚本：es6
+- 语法检测：ESLint
+- 打包：webpack
 
-   `npm install`
+## 目录结构
 
-2. 预览模式
+- component：vue组件
+- font：字体（[在线转换字体](https://onlinefontconverter.com/) ｜ [常用字体库](https://github.com/JoshuaYang/web-fonts)）
+- image：图片
+- script：脚本
+- style：样式
+- vendor：不参与合并输出的文件（可能需要手动创建该目录）
+- store：状态管理
+- router.js：路由配置
 
-   `npm start`
+```
+ website-template/    
+    |——config/    
+    |   |——postcss.config.js    
+    |   |——webpack.base.config.js    
+    |   |——webpack.dev.config.js    
+    |   |——webpack.prod.config.js    
+    |   |——webpack.bundle.config.js    
+    |   |——deploy.js    
+    |   |__ ***    
+    |——dev/    
+    |   |——component/ 全部组件    
+    |   |   |——common/ 全局复用组件    
+    |   |   |——layout/ 布局组件    
+    |	|	|——view/ 路由页面组件
+    |   |   |——src/ 配合bundle命令输出编译后js组件    
+    |   |   |   |——***.vue 可复用化组件    
+    |   |   |   |——***.js 输出文件    
+    |   |   |——App.vue 出口输出组件    
+    |   |——font/ 字体资源    
+    |   |——image/ 图片资源    
+    |   |   |——ignore/ 被require的资源，图片小于10kB    
+    |   |——script/ 第三方插件库    
+    |   |——store/ vuex配置目录    
+    |   |——style/ 样式目录    
+    |   |——*.html    
+    |   |——router.js 路由配置目录    
+    |   |——favico.ico    
+    |——.babelrc babel配置文件    
+    |——.eslintignore eslint忽略列表    
+    |——.eslintrc eslint配置文件    
+    |——.gitignore    
+    |——.package.json 项目配置目录    
+    |——README.md 说明文档    
+    |__***/**
+```
 
-## 考核
-
-### 实现前端框架的几个小案例（1d）
-
-- [x] [案例1](http://www.gbtags.com/gb/demoviewer/10407/a6b8d138-4f9f-4b2e-812e-416ece45b95f/example1.html.htm)
-- [x] [案例2](http://www.gbtags.com/gb/demoviewer/10407/a6b8d138-4f9f-4b2e-812e-416ece45b95f/example2.html.htm)
-- [x] [案例3](http://www.gbtags.com/gb/demoviewer/10407/a6b8d138-4f9f-4b2e-812e-416ece45b95f/example3.html.htm)
-- [x] [案例4](http://www.gbtags.com/gb/demoviewer/10407/a6b8d138-4f9f-4b2e-812e-416ece45b95f/example4.html.htm)
-- [x] [案例5](http://www.gbtags.com/gb/demoviewer/10407/a6b8d138-4f9f-4b2e-812e-416ece45b95f/example5.html.htm)
-
-### 数据筛选（1d）
-
-- 自己找3种类型的图片，数量各不相等，7+9+11
-
-- 做一个页面，上面有7个按钮
-
-    - 所有分类
-    - 分类A
-    - 分类B
-    - 分类C
-    - 分类A+B
-    - 分类B+C
-    - 分类A+C
-
-- 下面是图片展示，一行3个
-- 点击对应的按钮，显示对应的图片
-- 每次点击按钮（不是点击同一个按钮多次），图片都要乱序显示
-- [功能参考](http://demos.clientapprove.com/NYT_tiffany/)
-
-### 项目考察（8d）
-
-- 使用react实现从前的一个项目
-
-- [预览地址](http://www.clientapprove.com/preview/R29_holiday_gift_curator/)
-
-- [素材下载](https://github.com/fpg-wx/training/raw/master/assets/react-r29.zip)
-
-- 功能说明
-
-  - 总共5种person类型：
-    - mom
-    - dad
-    - s.o.
-    - bff
-    - work spouse
-  - 总共6种trait类型
-    - chill
-    - chic aesthete
-    - emo
-    - type a
-    - early adopter
-    - fancy
-  - 数据
-    - 来源：[点击访问](https://cdn.contentful.com/spaces/gju6m3ezaxar/entries?content_type=jsonFull&include=10&limit=200&access_token=e887c7cd3298dd5e14cce7cd22523670abea9de380aef548efcbcb4b3a612ee9)
-    - 节点：`items[0].fields.jsonFull.feed.entry`
-    - 相关属性：（值在$t节点）
-      - 所属person：`gsx$person`
-      - 所属trait：`gsx$trait`
-      - 链出地址：`gsx$clickouturl`
-      - 描述文字：`gsx$description70charactersmax`
-      - 封面图片：`gsx$image`
-      - 产品名称：`gsx$itemname`
-      - 产品价格：`gsx$price`
-      - 产品类型：`gsx$type`
-  - 每次可以选择1个person+3个trait，之后展示出对应的产品列表
-  - 点击person页面第6个按钮，随机选择1个person+3个trait组合，并直接展示产品列表
-  - 在产品列表可以单独替换person，或单独替换trait，并展示产品列表
-  - 也可以直接重新选择person和trait，并展示产品列表
-  - 未选择person，或未选满3个trait，则无法继续下一步操作
-
-- 要点：
-
-  - 根据用户不同的选项组合，显示不同的结果页面
-
-- 注意点
-
-  - 需要地址栏实时刷新
-  - 需要路由
-  - 专注功能就行，排版看得过去就可以
-  - 不需要sponsored产品

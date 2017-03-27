@@ -1,6 +1,7 @@
 <template lang="html">
     <div class="showcase-container">
         <showcase-content v-if="ifProductsLoaded"></showcase-content>
+    </div>
 </template>
 
 <script>
