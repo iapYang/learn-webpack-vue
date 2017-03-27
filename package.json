@@ -1,7 +1,7 @@
 {
-  "name": "template",
-  "version": "2.0.1",
-  "description": "",
+  "name": "learn-webpack-vue",
+  "version": "1.0.0",
+  "description": "learn how to use webpack & vue",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --progress --config ./conf/webpack.dev.config.js",
@@ -12,7 +12,7 @@
     "update-json": "ncu -a",
     "update-package": "npm update"
   },
-  "author": "",
+  "author": "iapyang",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.23.1",
