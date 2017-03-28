@@ -29,13 +29,15 @@ html {
 }
 
 #app {
-    background-color: #fcf3f4;    
+    background-color: #fcf3f4;
+    height: 100%;    
 }
 
 .app-container{
     position: relative;
     max-width: 1500px;
     margin: 0 auto;
+    height: 100%;
     background-color: #fcf3f4;
 }
 </style>
